@@ -14,13 +14,16 @@
     <div id="app" style="margin-top: 2rem">
       <div class="container">
         <div class="form-group">
-          <input type="search" />
+          <input type="search" v-model="filterText" />
         </div>
-        <ul>
-          <li>Email</li>
-          <li class="marked">Email</li>
-          <li>...</li>
-          <li>Email</li>
+        <ul v-if="emails && emails.length>0">
+          <!-- Данные добавляются в массив с ключами в кавычках при push объекта в массив. Если вывести массив в консоль- так показывает. 
+             Интересно- так и должно быть ?
+            [ { "value": "Eliseo@gardner.biz", "marked": false } ]
+          Я думал- ключи должны добавляться без кавычек-->
+          <li v-for="email in emailFilter" :class="{'marked' : email.marked}"> 
+            {{ email.value }}
+          </li>
         </ul>
       </div>
     </div>

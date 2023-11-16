@@ -29,4 +29,48 @@ const emails = [
   'Isaias_Kuhic@jarrett.net',
 ];
 
+import { createApp, defineComponent } from './vendor/vue.esm-browser.js';
+
+function actionF(x, y, action) {
+  if (action === 'sum') return x + y;
+  else if (action === 'subtract') return x - y;
+  else if (action === 'multiply') return x * y;
+  else if (action === 'divide') return x / y;
+  else return 0;
+}
+
+const App = defineComponent({
+  name: 'App',
+  data() {
+    return {
+        emails:[],
+        filterText:"",
+    };
+  },
+  // Создание массива с email-ами в удобном для задачи виде на основе массива email-ов
+  created(){
+    emails.map(item=>{
+      this.emails.push({value:item, marked:false})
+    })
+  }, 
+  computed:{
+    emailFilter(){  
+      return  this.emails.map(item =>{    
+        if (this.filterText.trim()!=="" && item.value.includes(this.filterText)) item.marked = true
+        else item.marked = false
+        return item
+      })
+    
+    }
+  }
+});
+
+const app = createApp(App);
+const vm = app.mount('#app');
+
+window.vm = vm;
+
+// Создайте Vue приложение
+
+
 // Требуется создать Vue приложение
