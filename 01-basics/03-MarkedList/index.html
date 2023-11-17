@@ -17,10 +17,6 @@
           <input type="search" v-model="filterText" />
         </div>
         <ul v-if="emails && emails.length>0">
-          <!-- Данные добавляются в массив с ключами в кавычках при push объекта в массив. Если вывести массив в консоль- так показывает. 
-             Интересно- так и должно быть ?
-            [ { "value": "Eliseo@gardner.biz", "marked": false } ]
-          Я думал- ключи должны добавляться без кавычек-->
           <li v-for="email in emailFilter" :class="{'marked' : email.marked}"> 
             {{ email.value }}
           </li>

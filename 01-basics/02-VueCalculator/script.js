@@ -1,11 +1,13 @@
 import { createApp, defineComponent } from './vendor/vue.esm-browser.js';
 
-function actionF(x, y, action) {
-  if (action === 'sum') return x + y;
-  else if (action === 'subtract') return x - y;
-  else if (action === 'multiply') return x * y;
-  else if (action === 'divide') return x / y;
-  else return 0;
+function actionF(x, y, checked) {
+  switch(checked){
+    case "sum": return x + y;
+    case "subtract": return x - y;
+    case "multiply": return x * y;
+    case "divide": return x / y;
+    default: return 0;
+  }
 }
 
 const App = defineComponent({
@@ -14,25 +16,13 @@ const App = defineComponent({
     return {
       number1: 0,
       number2: 0,
-      result: 0,
-      action: '',
+      checked: 0,
     };
   },
-  methods: {
-    counterPlus() {
-      this.counter++;
-    },
-  },
-  watch: {
-    number1(value) {
-      this.result = actionF(value, this.number2, this.action);
-    },
-    number2(value) {
-      this.result = actionF(this.number1, value, this.action);
-    },
-    action(value) {
-      this.result = actionF(this.number1, this.number2, value);
-    },
+  computed: {
+    result(){
+      return actionF(this.number1, this.number2, this.checked)
+    }
   },
 });
 
