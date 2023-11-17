@@ -7,14 +7,11 @@
   <body>
     <div id="app">
       <div>
-        <label v-for="i in 5">
-          <input v-model.number="meetupId" type="radio" name="meetupId" :value="i" /> {{ i }}
-        </label>
+        <label v-for="i in 5"> <input v-model.number="meetupId" type="radio" name="meetupId" :value="i" /> {{ i }} </label>
         <hr />
         <h3 v-if="meetup">{{ meetup.title }}</h3>
       </div>
     </div>
-
     <script type="module" src="./script.js"></script>
   </body>
 </html>
