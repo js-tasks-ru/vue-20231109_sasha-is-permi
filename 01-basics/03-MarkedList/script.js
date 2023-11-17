@@ -31,38 +31,32 @@ const emails = [
 
 import { createApp, defineComponent } from './vendor/vue.esm-browser.js';
 
-function actionF(x, y, action) {
-  if (action === 'sum') return x + y;
-  else if (action === 'subtract') return x - y;
-  else if (action === 'multiply') return x * y;
-  else if (action === 'divide') return x / y;
-  else return 0;
-}
-
 const App = defineComponent({
   name: 'App',
   data() {
     return {
-        emails:[],
+        emailsAll:[],
         filterText:"",
     };
   },
   // Создание массива с email-ами в удобном для задачи виде на основе массива email-ов
   created(){
     emails.map(item=>{
-      this.emails.push({value:item, marked:false})
+      this.emailsAll.push({value:item, marked:false})
     })
   }, 
   computed:{
-    emailFilter(){  
-      return  this.emails.map(item =>{    
-        if (this.filterText.trim()!=="" && item.value.includes(this.filterText)) item.marked = true
-        else item.marked = false
-        return item
-      })
-    
-    }
-  }
+    emailFilter(){ 
+       let result = []
+       if (this.emailsAll.length===0) return []
+       this.emailsAll.forEach( (item) =>{
+       if (this.filterText.trim()!=="" && item.value.includes(this.filterText)) {
+         result.push({value:item.value, marked: true})
+        } else result.push({value:item.value, marked: false})
+        })
+        return result;
+        }
+       }
 });
 
 const app = createApp(App);

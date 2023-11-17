@@ -16,7 +16,7 @@
         <div class="form-group">
           <input type="search" v-model="filterText" />
         </div>
-        <ul v-if="emails && emails.length>0">
+        <ul v-if="emailFilter && emailFilter.length>0">
           <li v-for="email in emailFilter" :class="{'marked' : email.marked}"> 
             {{ email.value }}
           </li>

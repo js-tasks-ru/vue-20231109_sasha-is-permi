@@ -16,7 +16,7 @@ const App = defineComponent({
     return {
       number1: 0,
       number2: 0,
-      checked: 0,
+      checked: "",
     };
   },
   computed: {
