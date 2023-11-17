@@ -2,7 +2,7 @@ import { createApp } from './vendor/vue.esm-browser.js';
 
 const API_URL = 'https://course-vue.javascript.ru/api';
 
-async function fetchMeetupById(meetupId) {
+function fetchMeetupById(meetupId) {
   return fetch(`${API_URL}/meetups/${meetupId}`).then((response) => {
     if (response.ok) {
       console.log(response)
