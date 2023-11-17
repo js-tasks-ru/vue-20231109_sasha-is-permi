@@ -17,27 +17,26 @@ async function fetchMeetupById(meetupId) {
 
 import { createApp, defineComponent } from './vendor/vue.esm-browser.js';
 
-
-const App = defineComponent({
-  name: 'App',
+createApp({
   data() {
     return {
-      result:[]
+      meetupId: null,
+      meetup: null,
     };
   },
-  methods:{
-    getData(){
-      this.result =  fetchMeetupById(1);
-      console.log(this.result)
-    }
+
+  watch: {
+    meetupId(newMeetupId) {
+      this.meetup = null;
+      this.fetchMeetup(newMeetupId);
+    },
   },
-  mounted(){
-    this.getData();
-  }
-});
 
-const app = createApp(App);
-const vm = app.mount('#app');
-
-window.vm = vm;
-
+  methods: {
+    fetchMeetup(id) {
+      fetchMeetupById(id).then((meetup) => {
+        this.meetup = meetup;
+      });
+    },
+  },
+}).mount('#app');
