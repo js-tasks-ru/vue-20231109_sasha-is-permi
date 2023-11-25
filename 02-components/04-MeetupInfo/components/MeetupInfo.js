@@ -30,7 +30,7 @@ export default defineComponent({
       <li>
         <img class="icon meetup-info__icon" alt="icon" src="/assets/icons/icon-cal-lg.svg" />
         <time datetime="2020-01-01">
-        {{ new Date(date).toLocaleDateString("${navigator.language}",{year:"numeric",month:"long"}) }}
+        {{ new Date(date).toLocaleDateString("${navigator.language}") }}
         </time>
       </li>
     </ul>`,
