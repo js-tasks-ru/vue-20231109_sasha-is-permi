@@ -15,6 +15,15 @@ export default defineComponent({
       type:Number,
       reqired: true,
     },
+  }, 
+  computed: {
+    dateFormated() {
+      return new Date(this.date).toLocaleString(navigator.language, {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      });
+    },
   },
 
   template: `
@@ -30,7 +39,7 @@ export default defineComponent({
       <li>
         <img class="icon meetup-info__icon" alt="icon" src="/assets/icons/icon-cal-lg.svg" />
         <time datetime="2020-01-01">
-        {{ new Date(date).toLocaleDateString() }}
+        {{ dateFormated }}
         </time>
       </li>
     </ul>`,
