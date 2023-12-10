@@ -17,7 +17,7 @@ export default defineComponent({
       <div class="agenda-item__col">
         <img :src="\`/assets/icons/icon-\${$options.agendaItemIcons[agendaItem.type]}.svg\`" class="icon" :alt="agendaItem.type" />
       </div>
-      <div class="agenda-item__col"> {{ agendaItem.startsAt + ' ' + agendaItem.endsAt }} </div>
+      <div class="agenda-item__col"> {{ agendaItem.startsAt }} - {{ agendaItem.endsAt }} </div>
       <div class="agenda-item__col">
         <h3 class="agenda-item__title"> {{ agendaItem.title ? agendaItem.title : $options.agendaItemDefaultTitles[agendaItem.type]}}</h3>
         <p v-if="agendaItem.type==='talk'" class="agenda-item__talk">
@@ -29,5 +29,4 @@ export default defineComponent({
       </div>
     </div>`,
 });
-
 
