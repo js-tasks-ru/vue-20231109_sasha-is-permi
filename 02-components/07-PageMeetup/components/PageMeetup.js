@@ -65,7 +65,7 @@ export default defineComponent({
           });
       },
       immediate: true,
-    },
+    }},
 
   template: `
     <div class="page-meetup">
